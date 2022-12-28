@@ -1,5 +1,5 @@
 *
-!*.rs
-!*.md
+!**/*.rs
+!**/*.md
 !.gitignore
-!*.toml
+!**/*.toml
