@@ -1,5 +1,2 @@
-*
-!**/*.rs
-!**/*.md
-!.gitignore
-!**/*.toml
+*.exec
+target
