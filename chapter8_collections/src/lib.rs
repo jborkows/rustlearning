@@ -2,6 +2,9 @@ pub fn add(left: usize, right: usize) -> usize {
     left + right
 }
 
+pub mod time_live_annotations;
+pub mod using_maps;
+pub mod using_strings;
 pub mod using_vector;
 
 #[cfg(test)]

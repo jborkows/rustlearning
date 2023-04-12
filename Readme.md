@@ -13,3 +13,12 @@ aBunchOfFunctions::fun()
 ::someModule::function <- to instruct rust to search inside of main directory
 super::someModule::function <- search in parent module 
 ```
+* macro expand:
+```
+$ cargo expand //if cargo install cargo-expand was executed
+```
+otherwise
+```
+$ cargo rustc --profile=check -- -Zunpretty=expanded
+```
+
