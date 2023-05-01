@@ -1,4 +1,8 @@
-use std::{fmt::Debug, ops::Deref, rc::Rc};
+use std::{
+    cell::{Ref, RefCell},
+    ops::Deref,
+    rc::Rc,
+};
 
 struct MyBox<T>(T);
 
@@ -84,8 +88,25 @@ fn sharing_list() {
         // let c = Cons(3, Rc::new(a)); //<-use of moved value a
 
         let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
+        //Borrow checker rules will be enforce on runtime
         let b = Cons(3, Rc::clone(&a));
         let c = Cons(3, Rc::clone(&a));
         println!("A counter has count of {}", Rc::strong_count(&a))
     }
+}
+
+#[test]
+fn multiple_owners_of_data() {
+    let value = RefCell::new(10);
+    let a = Rc::new(&value);
+
+    let b = Rc::clone(&a);
+    let c = Rc::clone(&a);
+
+    *b.borrow_mut() += 10;
+    println!("After modyfing b a = {}", *a.borrow());
+    *c.borrow_mut() += 20;
+    println!("After modyfing c a = {}", *a.borrow());
+    *a.borrow_mut() -= 100;
+    *value.borrow_mut() *= 2;
 }

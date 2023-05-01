@@ -3,6 +3,7 @@ pub fn add(left: usize, right: usize) -> usize {
 }
 
 mod box_usage;
+mod ref_cell_as_mocks;
 
 #[cfg(test)]
 mod tests {
